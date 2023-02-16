@@ -167,7 +167,7 @@ let truck1 = new Trucks (3, "Aprilia", 50, 1, "gasoline", 2010, "", "", 20, 50);
 console.log(truck1.printAdditionalInfo2());
 
 
-
+//price button
 let btns = document.getElementsByClassName("price") as HTMLCollection; //button
 let par = document.getElementsByClassName("vehPrice") as HTMLCollection; //paragraph
 for (let i = 0; i < btns.length; i++) {
@@ -175,5 +175,5 @@ for (let i = 0; i < btns.length; i++) {
 par[i].innerHTML = cars[i].vehiclePrice();
     })
 }
-    // document.getElementsByClassName("vehPrice")[i].innerHTML = 
+  
     

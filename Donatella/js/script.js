@@ -120,6 +120,7 @@ var Trucks = /** @class */ (function (_super) {
 }(Vehicles));
 var truck1 = new Trucks(3, "Aprilia", 50, 1, "gasoline", 2010, "", "", 20, 50);
 console.log(truck1.printAdditionalInfo2());
+//price button
 var btns = document.getElementsByClassName("price"); //button
 var par = document.getElementsByClassName("vehPrice"); //paragraph
 var _loop_1 = function (i) {
@@ -130,4 +131,3 @@ var _loop_1 = function (i) {
 for (var i = 0; i < btns.length; i++) {
     _loop_1(i);
 }
-// document.getElementsByClassName("vehPrice")[i].innerHTML = 
