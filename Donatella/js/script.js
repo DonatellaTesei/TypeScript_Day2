@@ -46,52 +46,88 @@ var Actor = /** @class */ (function (_super) {
 }(Person));
 var actor1 = new Actor("Kate", "Hudson", 43, "actor", 500000, "Los Angeles");
 console.log(actor1.printAdditionalInfo());
-//Day 2 | Classwork | Advanced
-//Create an App that has to offer four different of types of vehicles and list the vehicle models based on the selected panel. Once the user clicks on some vehicle show its details and possibility to view the price
-//Create a Parent Class called Vehicles
-// interface IVehicles{
-//     ID:string;
-//     Model: string;
-//     prodYear: number;
-//     color?: string;
-// }
-// class Vehicles implements IVehicles{
-//     protected ID:number;
-//     Model: string;
-//     kilomLeft: number;
-//     seatsNum: number;
-//     fuelType: string;
-//     prodYear: number;
-//     depositLocation: string = "Vienna Heiligenstadt";
-//     constructor(ID:number, Model:string,  kilomLeft:number, seatsNum: number,fuelType: string,  prodYear: number,  depositLocation: string,
-//   ){
-//         this.ID = ID;
-//         this.Model = Model;
-//         this.kilomLeft= kilomLeft;
-//         this.seatsNum = seatsNum;
-//         this.fuelType = fuelType;
-//         this.prodYear = prodYear;
-//         this.depositLocation = depositLocation;
-//   }
-//   printInfo(): string {
-//     return`Car ID: ${this.ID}, Model: ${this.Model}, Kilometers left: ${ this.kilomLeft}, Number of seats: ${this.seatsNum}, Fuel type:${ this.fuelType}, Year of production: ${this.prodYear}, Location: ${this.depositLocation}`;
-// }
-// }
-// const vehicle1 = new Vehicles (1, "Lamborghini Aventador ", 100, 2, "bio-diesel", 2015, "");
-// const vehicle2 = new Vehicles (2, "Fiat 500 ", 200, 5, "bio-diesel", 2017, "");
-// // console.log(vehicle1.printInfo());
-// class Motorbikes extends Vehicles{
-//     weight: number;
-//     jobLocation: string;
-//     constructor(ID:number, Model:string,  kilomLeft:number, seatsNum: number,fuelType: string,  prodYear: number,  depositLocation: string, weight: number, 
-//         ){
-//         super(ID, Model, kilomLeft, seatsNum, fuelType, prodYear,depositLocation);
-//         this.jobLocation = jobLocation;
-//         this.weight = weight;
-//     }
-// printAdditionalInfo(): string {
-// return `${super.printString()} and I get ${this.salary} every month, and I work in ${this.jobLocation}`; //this.printString
-//     }
-// }
-// const  = new Actor ("Kate", "Hudson", 43, "actor", 500000, "Los Angeles");
-// console.log(actor1.printAdditionalInfo());
+var cars = [];
+var Vehicles = /** @class */ (function () {
+    function Vehicles(ID, Model, mileage, seatsNum, fuelType, prodYear, image) {
+        this.depositLocation = "Vienna Heiligenstadt";
+        this.ID = ID;
+        this.Model = Model;
+        this.mileage = mileage;
+        this.seatsNum = seatsNum;
+        this.fuelType = fuelType;
+        this.prodYear = prodYear;
+        this.image = image;
+        cars.push(this);
+    }
+    Vehicles.prototype.printInfo = function () {
+        return "\n    <div class=\"card\" shadow p-3 mb-5 bg-body-tertiary rounded h-90\" style=\"width: 22rem;\">\n  <img src=\"".concat(this.image, "\" class=\"img-thumbnail mt-2\" alt=\"").concat(this.Model, "\">\n  <div class=\"card-body\">\n    <h5 class=\"card-title text-center Model\">").concat(this.Model, "</h5>\n    <p class=\"card-text id\"><b>Vehicle ID:</b> ").concat(this.ID, "</p>\n    <p class=\"kilometers\"><b> Mileage:</b> ").concat(this.mileage, "</p>\n    <p class=\"seats\"> <b>Number of seats:</b> ").concat(this.seatsNum, "</p>\n    <p class=\"fuel\"><b>Fuel type:</b>").concat(this.fuelType, "</p>\n    <p class=\"year\"><b>Year of production:</b> ").concat(this.prodYear, "</p>\n    <p class=\"location\"><b> Location: </b>").concat(this.depositLocation, "</p>\n    <p class=\"vehPrice\">&nbsp;</p>\n    <a href=\"#\" class=\"btn btn-primary price\">Show price</a>\n  </div>\n</div>");
+    };
+    Vehicles.prototype.vehiclePrice = function () {
+        return "".concat(500000 / this.mileage);
+    };
+    return Vehicles;
+}());
+// here we create our cars
+new Vehicles(1, "Lamborghini Aventador ", 100, 2, "bio-diesel", 2015, "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/model_detail/augmented-reality/aventador/s/ar_aven_s.png"),
+    new Vehicles(1, "Lamborghini Aventador ", 100, 2, "bio-diesel", 2015, "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/model_detail/augmented-reality/aventador/s/ar_aven_s.png"),
+    new Vehicles(2, "Fiat 500", 200, 5, "bdiesel", 2017, "https://www.fiat.at/content/dam/fiat/com/my23/500-500c/colorizer/500/red/500-figurini-colorizer-Passion-Red-desktop-680x430.png"),
+    new Vehicles(3, "Tesla X", 150, 5, "electric", 2018, "https://cdn.motor1.com/images/mgl/WgXQ1/s1/das-suv-aus-der-zukunft.jpg"),
+    new Vehicles(4, "Aston Martn DB11", 300, 2, "gasoline", 2020, "https://imgr1.auto-motor-und-sport.de/ASTON-MARTIN-DB11-V8-SHADOW-EDITION-react169Big-79e28615-1668634.jpg"),
+    new Vehicles(5, "Ferrari Roma", 50, 2, "gasoline", 2021, "https://i.auto-bild.de/ir_img/2/4/5/1/1/3/3/5f2947aad5b9d938.jpg");
+new Vehicles(5, "Ferrari Roma", 50, 2, "gasoline", 2021, "https://i.auto-bild.de/ir_img/2/4/5/1/1/3/3/5f2947aad5b9d938.jpg");
+// let vehicle1 = new Vehicles (1, "Lamborghini Aventador ", 100, 2, "bio-diesel", 2015, "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/model_detail/augmented-reality/aventador/s/ar_aven_s.png");
+// vehicle.innerHTML += vehicle1.printInfo();
+// let vehicle2 = new Vehicles (2, "Fiat 500", 200, 5, "bdiesel", 2017, "https://www.fiat.at/content/dam/fiat/com/my23/500-500c/colorizer/500/red/500-figurini-colorizer-Passion-Red-desktop-680x430.png");
+// vehicle.innerHTML += vehicle2.printInfo();
+// let vehicle3 = new Vehicles (3, "Tesla X", 150, 5, "electric", 2018, "https://cdn.motor1.com/images/mgl/WgXQ1/s1/das-suv-aus-der-zukunft.jpg");
+// vehicle.innerHTML += vehicle3.printInfo();
+// let vehicle4 = new Vehicles (4, "Aston Martn DB11", 300, 2, "gasoline", 2020, "https://imgr1.auto-motor-und-sport.de/ASTON-MARTIN-DB11-V8-SHADOW-EDITION-react169Big-79e28615-1668634.jpg");
+// vehicle.innerHTML += vehicle4.printInfo();
+// let vehicle5 = new Vehicles (5, "Ferrari Roma", 50, 2, "gasoline", 2021, "https://i.auto-bild.de/ir_img/2/4/5/1/1/3/3/5f2947aad5b9d938.jpg");
+// vehicle.innerHTML += vehicle5.printInfo();
+// console.log(vehicle1.printInfo());
+var vehicle = document.getElementById("result");
+for (var _i = 0, cars_1 = cars; _i < cars_1.length; _i++) {
+    var val = cars_1[_i];
+    vehicle.innerHTML += val.printInfo();
+}
+var Motorbikes = /** @class */ (function (_super) {
+    __extends(Motorbikes, _super);
+    function Motorbikes(ID, Model, mileage, seatsNum, fuelType, prodYear, depositLocation, image, weight) {
+        var _this = _super.call(this, ID, Model, mileage, seatsNum, fuelType, prodYear, image) || this;
+        _this.weight = weight;
+        return _this;
+    }
+    Motorbikes.prototype.printAdditionalInfo = function () {
+        return "".concat(_super.prototype.printInfo.call(this), ", weight: ").concat(this.weight); //
+    };
+    return Motorbikes;
+}(Vehicles));
+var motorbike1 = new Motorbikes(3, "Aprilia", 50, 1, "gasoline", 2010, "", "", 20);
+console.log(motorbike1.printAdditionalInfo());
+var Trucks = /** @class */ (function (_super) {
+    __extends(Trucks, _super);
+    function Trucks(ID, Model, mileage, seatsNum, fuelType, prodYear, depositLocation, image, weight, cabinSize) {
+        var _this = _super.call(this, ID, Model, mileage, seatsNum, fuelType, prodYear, image) || this;
+        _this.weight = weight;
+        _this.cabinSize = cabinSize;
+        return _this;
+    }
+    Trucks.prototype.printAdditionalInfo2 = function () {
+        return "".concat(_super.prototype.printInfo.call(this), ", weight: ").concat(this.weight, ", cabinSize:").concat(this.cabinSize); //
+    };
+    return Trucks;
+}(Vehicles));
+var truck1 = new Trucks(3, "Aprilia", 50, 1, "gasoline", 2010, "", "", 20, 50);
+console.log(truck1.printAdditionalInfo2());
+var btns = document.getElementsByClassName("price"); //button
+var par = document.getElementsByClassName("vehPrice"); //paragraph
+var _loop_1 = function (i) {
+    btns[i].addEventListener("click", function () {
+        par[i].innerHTML = cars[i].vehiclePrice();
+    });
+};
+for (var i = 0; i < btns.length; i++) {
+    _loop_1(i);
+}
+// document.getElementsByClassName("vehPrice")[i].innerHTML = 
